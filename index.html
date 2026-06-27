@@ -110,7 +110,7 @@
   .exercise-detail { font-size: 12px; color: var(--text-secondary); text-align: right; flex-shrink: 0; line-height: 1.5; word-break: break-word; min-width: 140px; padding-top: 2px; }
   .exercise-detail b { display: block; color: var(--fire-glow); font-weight: 700; font-size: 13.5px; margin-bottom: 2px; }
 
-  /* DISEÑO EXCLUSIVO PARA LA NUEVA SECCIÓN DE STRATEGIES/INSIGHTS */
+  /* SECCIÓN: OBJETIVOS, TIPS Y ESTRATEGIAS */
   .insight-section {
     margin-top: 0.75rem;
     padding: 0.85rem 1rem;
@@ -168,7 +168,7 @@
 </nav>
 
 <section class="hero">
-  <p class="hero-eyebrow">Performance Hub — Alumno: <span id="student-name">Carlos Alvarez</span></p>
+  <p class="hero-eyebrow">Performance Hub — Alumno: <span id="student-name">Carlos Alderete</span></p>
   <h1 id="hero-title">Planificación Semanal /<br><em id="student-objective">Cargando...</em></h1>
   <p class="hero-sub" id="hero-subtitle">Plan optimizado y diseñado por el <strong>Coach JP</strong> — Profesor de Educación Física, Especialista en alto rendimiento deportivo, Posgrado en ciencias del deporte (Freie Universität Berlin - Alemania).</p>
      
@@ -182,10 +182,10 @@
     <h3>Estrategia General del Mesociclo</h3>
     <p>Este macro-bloque de musculación se organiza en un <strong>Mesociclo Pedagógico de 4 Semanas</strong> orientado a la hipertrofia funcional, fuerza estructural y control cardiovascular adaptado:</p>
     <ul style="margin-top: 0.6rem; padding-left: 1.25rem; list-style-type: disc; color: var(--text-secondary); font-size:13px;">
-      <li><strong>Semana 1:</strong> Calibración de rango de movimiento dinámico, adaptación controlada a RPE 6 y automatización biomecánica.</li>
-      <li><strong>Semana 2:</strong> Consolidación de cargas mecánicas estables asegurando una excelente oxigenación celular continua.</li>
-      <li><strong>Semana 3:</strong> Pico volumétrico efectivo manteniendo control hemodinámico y series metabólicas seguras en poleas/bandas.</li>
-      <li><strong>Semana 4:</strong> Descarga biomecánica estratégica para asimilar adaptaciones y descargar tensiones en tejido conectivo blando.</li>
+      <li><strong>Semana 1 (Carga Base):</strong> Establecimiento de los RPE de referencia, calibración de rangos de movimiento y control biomecánico del tempo.</li>
+      <li><strong>Semana 2 (Saturación):</strong> Consolidación de cargas mecánicas estables asegurando volumen y una excelente oxigenación celular continua.</li>
+      <li><strong>Semana 3 (Pico / Densidad):</strong> Máximo volumen efectivo acumulado con series metabólicas intensas pero hemodinámicamente seguras.</li>
+      <li><strong>Semana 4 (Descarga):</strong> Reducción drástica del volumen sistémico y eliminación de intersets activos para consolidar adaptaciones del tejido blando.</li>
     </ul>
     <div class="mesociclo-warning">
       <strong>⚠️ Enfoque Técnico de Seguridad:</strong> <span id="coaching-safety-focus">Cargando...</span>
@@ -232,11 +232,11 @@
 
 <script>
 const CONFIG_ATLETA = {
-  nombre: "Carlos Alvarez", 
+  nombre: "Carlos Alderete", 
   objetivoSemanal: "Hipertrofia Funcional, Fuerza Estructural y Mantenimiento de Calidad de Vida",
   nivel: "Tercera Edad (Activo / Post-Infarto Recuperado)",
   evento: "Salud Cardiovascular Integrada (5 Días/Semana)",
-  tituloRutina: "⚡ PROGRAMACIÓN SEMANAL DÍA POR DÍA - CARLOS ALVAREZ",
+  tituloRutina: "⚡ PROGRAMACIÓN SEMANAL DÍA POR DÍA - CARLOS ALDERETE",
   enfoqueDia: "Fuerza controlada a RPE 6-7, respiración fluida obligatoria (Sin maniobras de Valsalva)."
 };
 
@@ -248,240 +248,239 @@ document.getElementById('coaching-safety-focus').textContent = CONFIG_ATLETA.enf
 const workouts = [
   {
     id: "lunes",
-    title: "DÍA 1 — Pecho y Tríceps",
-    subtitle: "Empujes Horizontales + Cardio Z2",
+    title: "DÍA 1 — Torso Integrado",
+    subtitle: "Empujes / Tracciones Horizontales + Finisher Tríceps",
     discipline: "Musculación",
     disciplineSlug: "Musculación",
-    level: "Pecho y Tríceps",
-    levelSlug: "Pecho_y_Tríceps",
-    desc: "Estimulación segura de la musculatura de empuje y base cardiovascular aeróbica controlada.",
+    level: "Torso Integrado",
+    levelSlug: "Torso_Integrado",
+    desc: "Estabilidad escapular, fuerza transversal controlada y remate isométrico de Core.",
     isRest: false,
     warmup: {
       title: "🧠 Warm Up / Activación Biomecánica",
       insights: {
-        objective: "Lubricación articular y elevación progresiva de la frecuencia cardíaca.",
-        tips: "Rotaciones suaves de hombro, rodilla y cadera sin carga externa.",
-        strategy: "Transición suave del reposo al esfuerzo."
+        objective: "Lubricación de la articulación glenohumeral y reactivación tónica postural.",
+        tips: "Mantener los hombros abajo, alejados de las orejas. No forzar rangos con dolor.",
+        strategy: "Transición progresiva para estabilizar la presión arterial sistólica antes de las cargas."
       },
       exercises: [
-        { name: "A1. Movilidad Articular Dinámica General", sub: "Rotaciones circulares y aperturas libres controladas.", reps: "5 a 8 minutos", detail: "Pausa: Fluida" },
-        { name: "A2. Puentes de Glúteo (Peso Corporal)", sub: "Alineación pélvica en el suelo sin cargas externas.", reps: "2 x 10 reps", detail: "Pausa: 60s / Suave" }
+        { name: "A1. Movilidad Articular General Dinámica", sub: "Rotaciones suaves de hombros (delante/atrás), flexo-extensión de codos y círculos de cadera.", reps: "5 a 8 minutos", detail: "Pausa: Continua" },
+        { name: "A2. Retracciones Escapulares con Banda Elástica", sub: "Sentado o de pie, brazos estirados al frente. Juntar los omóplatos atrás reteniendo 1 segundo.", reps: "2 x 10 reps", detail: "Pausa: 45s" }
       ]
     },
     main: {
       title: "🏋️‍♂️ Fuerza Axial / Estímulo Mecánico Central",
       insights: {
-        objective: "Estimular la masa muscular del tren superior (pecho/hombros) de forma guiada.",
-        tips: "Espalda bien apoyada. Exhalá al empujar, inhalá al regresar.",
-        strategy: "Evita picos bruscos de presión arterial."
+        objective: "Estimular la musculatura pectoral, deltoides anterior y dorsal sin balanceos peligrosos.",
+        tips: "Espalda totalmente apoyada en el respaldo. Llevar los agarres hacia la base del estómago.",
+        strategy: "El uso de vectores fijos y biseries controladas anula aceleraciones bruscas nocivas."
       },
       exercises: [
-        { name: "B1. Press de Pecho Sentado (Máquina o Bandas)", sub: "Empujes simétricos controlando el recorrido.", reps: "3 x 12 reps", detail: "<b>RPE 6</b><br>Pausa: 90s" },
-        { name: "B2. Aperturas de Pecho con Bandas Elásticas", sub: "Aperturas suaves manteniendo los codos semiflexionados.", reps: "3 x 12 reps", detail: "<b>RPE 6</b><br>Pausa: 60-90s" }
+        { name: "B1. Press de Pecho Sentado en Máquina", sub: "Empujes controlados (pueden usarse mancuernas o barra según viabilidad). <b>Interset:</b> 10-15 extensiones de tríceps con polea (soga).", reps: "3-4 series x 12 reps", detail: "<b>Tempo: 3.0.1.0 | RPE 6</b><br>Pausa: 90s" },
+        { name: "B2. Remo Sentado en Polea Baja", sub: "Agarre neutro estrecho traccionando firme al abdomen. <b>Interset:</b> 10-15 press francés acostado en banco plano con barra.", reps: "3-4 series x 12 reps", detail: "<b>Tempo: 2.0.1.1 | RPE 6-7</b><br>Pausa: 90s" }
       ]
     },
     metcon: {
       title: "⏱️ Bloque de Densidad MetCon / Escudo Core / Remates",
       insights: {
-        objective: "Hipertrofia localizada del tríceps, fuerza anti-rotación de Core y base aeróbica.",
-        tips: "Codos pegados a las costillas y firmes. Ritmo de caminata conversacional.",
-        strategy: "Mantener una respiración fluida y constante (exhalá en el esfuerzo)."
+        objective: "Vaciado glucogénico analítico del tren superior y resistencia a la fatiga localizada de brazos.",
+        tips: "Fijar el transverso (ombligo adentro) en cuadrupedia. Construir carga progresiva por set en el Finisher.",
+        strategy: "La inclusión de dominadas australianas e intersets de poleas limita picos tónicos de presión arterial."
       },
       exercises: [
-        { name: "C1. Extensión de Tríceps en Polea Alta (o Banda)", sub: "Extender hacia el suelo apretando 1 segundo abajo.", reps: "3 x 12-15 reps", detail: "<b>RPE 6</b><br>Pausa: 60s" },
-        { name: "C2. 'Pallof Press' Sentado o De Pie", sub: "Extender los brazos al frente sin permitir que la banda te mueva.", reps: "3 x 10 x lado", detail: "Pausa: 60s / Control" },
-        { name: "D1. Caminata en Cinta o Bici Fija (Zona 2)", sub: "Uso del test del habla (hablar en frases cortas sin agitarse).", reps: "20 a 30 minutos", detail: "Ritmo Constante" }
+        { name: "B1. Aperturas de Pecho con Poleas o Banda Elástica", sub: "Tensión lineal fluida abriendo el pectoral de forma simétrica.", reps: "3-4 series x 12 reps", detail: "<b>Tempo: 2.0.2.0 | RPE 6</b>" },
+        { name: "B2. Dominadas Australianas", sub: "Codos abiertos a 45°, tracción controlada manteniendo el bloque corporal alineado.", reps: "3-4 series x 12 reps", detail: "Pausa: 75s post ronda" },
+        { name: "Finisher Operativo Opcional de Tríceps (21-15-9-6)", sub: "Circuito decreciente en reps: Tríceps soga en polea + Extensión sobre la cabeza sentado + Fondos en banco.", reps: "1 Combinado Total", detail: "Carga Ascendente" },
+        { name: "C1. 'Pallof Press' Sentado", sub: "Banda elástica anclada lateral. Extender al frente aguantando la fuerza anti-rotación.", reps: "3 x 10 x lado", detail: "Pausa: 45s" },
+        { name: "C2. 'Bird-Dog' Modificado", sub: "Cuadrupedia estricta, extender de manera cruzada brazo y pierna opuesta hasta la horizontal.", reps: "3 x 8 por lado", detail: "Pausa: 45s" }
       ]
     }
   },
   {
     id: "martes",
-    title: "DÍA 2 — Espalda y Bíceps",
-    subtitle: "Tracciones y Postura + Cardio Z2",
+    title: "DÍA 2 — Tren Inferior",
+    subtitle: "Fuerza Autónoma / Dominante de Rodilla",
     discipline: "Musculación",
     disciplineSlug: "Musculación",
-    level: "Espalda y Bíceps",
-    levelSlug: "Espalda_y_Bíceps",
-    desc: "Fortalecimiento de la cadena posterior superior, postura escapular y resistencia miocárdica.",
+    level: "Tren Inferior",
+    levelSlug: "Tren_Inferior",
+    desc: "Autonomía motriz en bipedestación, balance dinámico de cuádriceps y estímulo tónico venoso.",
     isRest: false,
     warmup: {
       title: "🧠 Warm Up / Activación Biomecánica",
       insights: {
-        objective: "Liberar la rigidez acumulada en la espalda alta y el cuello.",
-        tips: "Rotaciones amplias hacia atrás y giros suaves de torso lado a lado.",
-        strategy: "Preparación tónica escapular segura."
+        objective: "Despertar la cadena posterior y lubricar articulaciones inferiores previo a la carga.",
+        tips: "Balanceos estables controlados apoyado de una baranda firme.",
+        strategy: "Preparación propioceptiva para asimilar el esfuerzo de balance."
       },
       exercises: [
-        { name: "A1. Movilidad de Hombros y Columna Torácica", sub: "Movimientos circulares amplios libres.", reps: "5 a 8 minutos", detail: "Pausa: Fluido" },
-        { name: "A2. Retracciones Escapulares con Banda Elástica", sub: "Brazos estirados al frente, juntar los omóplatos atrás.", reps: "2 x 12 reps", detail: "Pausa: 60s / Suave" }
+        { name: "A1. Movilidad de Cadera, Rodilla y Tobillo", sub: "Balanceos suaves de piernas y rotaciones controladas de tobillo.", reps: "5 a 8 minutos", detail: "Pausa: Fluida" },
+        { name: "A2. Extensiones de Cadera De Pie", sub: "Llevar la pierna recta hacia atrás apretando glúteo mayor sin arquear lumbares.", reps: "2 x 12 x lado", detail: "Pausa: 45s" }
       ]
     },
     main: {
-      title: "🏋️‍♂️ Tracciones Estructurales Centrales",
+      title: "🏋️‍♂️ Fuerza de Piernas Estructural",
       insights: {
-        objective: "Fortalecer la musculatura dorsal para mejorar la postura y evitar la cifosis.",
-        tips: "Traccionar hacia la base del estómago. Exhalá al traer el peso.",
-        strategy: "Control estricto en la fase excéntrica de regreso."
+        objective: "Reclutamiento coordinado indispensable para el patrón diario de levantarse de una silla.",
+        tips: "Mantener el coxis atrás en el descenso. Usar baranda o banda para fijar las estocadas traseras.",
+        strategy: "Control excéntrico estricto de 3 segundos en el Box Squat para salvaguardar rodillas."
       },
       exercises: [
-        { name: "B1. Remo Sentado en Polea Baja (o con Banda)", sub: "Tracción horizontal manteniendo torso erguido.", reps: "3 x 12 reps", detail: "<b>RPE 6-7</b><br>Pausa: 90s" },
-        { name: "B2. Jalón de Dorsales en Polea Alta (Hacia el Pecho)", sub: "Traer la barra hacia la parte alta del pecho (nunca tras nuca).", reps: "3 x 12 reps", detail: "<b>RPE 6</b><br>Pausa: 90s" }
+        { name: "B1. Sentadilla sobre Banco (Box Squat Goblet)", sub: "Sentarse controlado con mancuerna ligera en copa. <b>Interset:</b> 12 Estocadas hacia atrás desde step con soporte físico.", reps: "4 series x 10 reps", detail: "<b>Tempo: 3.1.1.0 | RPE 6-7</b><br>Pausa: 90s" },
+        { name: "B2. Extensión de Cadera Unilateral en Polea Baja", sub: "Patada de glúteo aislada a RPE bajo. <b>Interset:</b> 20 Desplazamientos laterales con banda elástica en rodillas.", reps: "3 series x 12 por lado", detail: "<b>Tempo: 2.0.1.1 | RPE 6</b><br>Pausa: 45s" }
       ]
     },
     metcon: {
-      title: "⏱️ Bloque de Densidad MetCon / Escudo Core / Remates",
+      title: "⏱️ Tríps Sural / Core de Arrastre",
       insights: {
-        objective: "Fuerza funcional de flexores del brazo, core cruzado y volumen aeróbico.",
-        tips: "Sentado con respaldo para máxima estabilidad. Extender brazo/pierna de forma lenta.",
-        strategy: "Romper a sudar levemente sin perder el aire en la bicicleta."
+        objective: "Fortalecimiento de pantorrillas para optimizar el despegue de marcha y mejorar el retorno de sangre.",
+        tips: "Sostener 2 segundos la contracción de gemelos arriba en puntas de pie.",
+        strategy: "El Farmer Carry asiste la fijación lumbopélvica bajo carga isométrica limpia."
       },
       exercises: [
-        { name: "C1. Curl de Bíceps Alterno con Mancuernas (Sentado)", sub: "Sentado erguido, control absoluto para evitar balanceos.", reps: "3 x 12 x brazo", detail: "<b>RPE 6</b><br>Pausa: 60s" },
-        { name: "C2. 'Bird-Dog' (Bicho-Caballo) en Cuadrupedia", sub: "Sostener la posición isométrica cruzada 2 segundos arriba.", reps: "3 x 8 por lado", detail: "Pausa: 60s / Control" },
-        { name: "D1. Bici Fija o Elíptica (Zona 2)", sub: "Esfuerzo lineal aeróbico cardioprotector.", reps: "20 a 30 minutos", detail: "Ritmo Constante" }
+        { name: "B3. Elevación de Talones De Pie en Smith", sub: "Bajar talones controladamente estirando fascia. <b>Interset:</b> 15-20 gemelos sentado en máquina (sóleos).", reps: "3-4 series x 15 reps", detail: "<b>Tempo: 2.0.1.2 | RPE 6</b><br>Pausa: 60s" },
+        { name: "C1. Farmer Carry (Paseo del Granjero)", sub: "Caminata de transporte con mancuernas moderadas fijando postura erguida.", reps: "3 x 30-40 metros", detail: "Pausa: La necesaria" }
       ]
     }
   },
   {
     id: "miercoles",
-    title: "DÍA 3 — Tren Inferior",
-    subtitle: "Fuerza Funcional, Autonomía y Balance",
+    title: "DÍA 3 — Torso Integrado",
+    subtitle: "Tracciones / Empujes Verticales y Postura",
     discipline: "Musculación",
     disciplineSlug: "Musculación",
-    level: "Tren Inferior",
-    levelSlug: "Tren_Inferior",
-    desc: "Desarrollo de la fuerza de piernas orientada a la estabilidad y autonomía del patrón de marcha.",
+    level: "Torso Integrado",
+    levelSlug: "Torso_Integrado",
+    desc: "Salud de la cintura escapular, fuerza antigravedad controlada y volumen estético de brazos.",
     isRest: false,
     warmup: {
       title: "🧠 Warm Up / Activación Biomecánica",
       insights: {
-        objective: "Lubricar articulaciones inferiores y activar musculatura glútea.",
-        tips: "Balanceos suaves apoyado en una silla y círculos lentos de tobillo.",
-        strategy: "Despertar la cadena posterior previo a los patrones de fuerza."
+        objective: "Apertura torácica y activación de la cadena cinética superior.",
+        tips: "Movimientos circulares ascendentes lentos sin entrar en zonas de pinzamiento.",
+        strategy: "Preparación tónica del manguito rotador antes del plano vertical."
       },
       exercises: [
-        { name: "A1. Movilidad de Cadera, Rodilla y Tobillo", sub: "Flexo-extensiones y rotaciones de articulaciones inferiores.", reps: "5 a 8 minutos", detail: "Pausa: Fluido" },
-        { name: "A2. Extensiones de Cadera De Pie (Glúteos)", sub: "Llevar pierna atrás apretando glúteo sin arquear lumbares.", reps: "2 x 12 x pierna", detail: "Pausa: 45s / Ligero" }
+        { name: "A1. Movilidad de Hombros con Bastón Liviano", sub: "Elevar bastón al frente abriendo el pecho de manera controlada.", reps: "5 a 8 minutos", detail: "Pausa: Fluida" },
+        { name: "A2. Aperturas en 'T' con Mini-Band", sub: "Brazos estirados al frente abriendo hacia afuera juntando escápulas.", reps: "2 x 12 reps", detail: "Pausa: 45s" }
       ]
     },
     main: {
-      title: "🏋️‍♂️ Fuerza de Piernas Funcional",
+      title: "🏋️‍♂️ Bloques de Tracción y Empuje Vertical",
       insights: {
-        objective: "Fuerza en cuádriceps/glúteos indispensable para la autonomía diaria.",
-        tips: "Bajar controlado (3s) hasta tocar la silla y subir firme. Exhalar al subir.",
-        strategy: "Bisagra de cadera horizontal pura manteniendo el eje de la mancuerna."
+        objective: "Fortalecimiento dorsal profundo e hipertrofia del deltoides sin comprimir la espalda.",
+        tips: "Traer la barra al pecho alto, nunca tras nuca. Sentarse con respaldo en vuelos laterales.",
+        strategy: "Alternar tracciones con intersets analíticos de bíceps (Seven / Martillo)."
       },
       exercises: [
-        { name: "B1. Sentadilla a la Silla (Box Squat con DB o Corporal)", sub: "Controlar el descenso de forma estricta antes de subir.", reps: "3 x 10 reps", detail: "<b>RPE 6-7</b><br>Pausa: 90s" },
-        { name: "B2. Peso Muerto Rumano con Mancuerna Ligera (DB)", sub: "Llevar las caderas hacia atrás flexionando apenas las rodillas.", reps: "3 x 10 reps", detail: "<b>RPE 6</b><br>Pausa: 90s" }
+        { name: "B1. Jalón de Dorsales en Polea Alta", sub: "Agarre prono ancho traccionando al esternón. <b>Interset:</b> Bíceps 'Seven' con barra plana (7 bajas, 7 altas, 7 completas).", reps: "3-4 series x 12 reps", detail: "<b>Tempo: 2.1.1.0 | RPE 6</b><br>Pausa: 90s" },
+        { name: "B2. Elevaciones Laterales con Mancuernas Ligeras", sub: "Ejecutado sentado de forma estricta. <b>Interset:</b> 10-15 Curl de Bíceps Martillo sentado con mancuernas.", reps: "3 series x 12-15 reps", detail: "<b>Tempo: 2.0.1.1 | RPE 6</b><br>Pausa: 75s" }
       ]
     },
     metcon: {
-      title: "⏱️ Bloque Propioceptivo / Retorno a la Calma",
+      title: "⏱️ Superserie Antagonista de Brazos",
       insights: {
-        objective: "Optimizar el patrón de marcha, propiocepción y prevención absoluta de caídas.",
-        tips: "Caminar talón-punta sobre una línea. Apoyo o pared cerca por seguridad.",
-        strategy: "Paso erguido y braceo natural a intensidad moderada (RPE 5)."
+        objective: "Fuerza accesoria de brazos necesaria para tareas cotidianas y sellado lumbar.",
+        tips: "Toda la espalda baja debe quedar plana contra el suelo en el Dead Bug.",
+        strategy: "El esquema piramidal dinámico (16-14-12-10) en el press eleva la fuerza de forma segura."
       },
       exercises: [
-        { name: "C1. Elevación de Talones De Pie (Con Apoyo)", sub: "Manos en la pared, subir al máximo en puntas y sostener 1s.", reps: "3 x 15 reps", detail: "Pausa: 60s / Estímulo" },
-        { name: "C2. Caminata en Línea Recta (Tándem Walk)", sub: "Estímulo de equilibrio dinámico controlado paso a paso.", reps: "3 x 15-20 pasos", detail: "Pausa: 60s / Enfoque" },
-        { name: "D1. Cinta de Caminar o Caminata Libre (Recuperación)", sub: "Favorecer la remoción de fatiga acumulada en las piernas.", reps: "20 minutos", detail: "Zona 2 Baja" }
+        { name: "C1. Curl de Bíceps con Soga o Barra (Polea Baja)", sub: "Flexiones de brazo controlando rítmicamente el descenso.", reps: "3-4 series x 12 reps", detail: "<b>Tempo: 2.0.1.1 | RPE 6</b>" },
+        { name: "C2. Curl de Bíceps + Press de Hombro con Mancuerna", sub: "Movimiento integrado fluido de flexión y empuje vertical encadenado.", reps: "4 series (16-14-12-10)", detail: "Carga Progresiva<br>Pausa: 60s" },
+        { name: "C3. 'Dead Bug' (Bicho Muerto) Modificado", sub: "Acostado boca arriba, descender brazo y talón opuesto de forma sutil rozando el piso.", reps: "3 x 8 por lado", detail: "Pausa: 60s" }
       ]
     }
   },
   {
     id: "jueves",
-    title: "DÍA 4 — Hombros y Core",
-    subtitle: "Salud Escapular y Estabilidad Profunda",
+    title: "DÍA 4 — Tren Inferior",
+    subtitle: "Cadena Posterior / Dominante de Cadera",
     discipline: "Musculación",
     disciplineSlug: "Musculación",
-    level: "Hombros y Core",
-    levelSlug: "Hombros_y_Core",
-    desc: "Estabilización de la cintura escapular y fortalecimiento de las fibras profundas abdominales.",
+    level: "Tren Inferior",
+    levelSlug: "Tren_Inferior",
+    desc: "Fortalecimiento lumbopélvico, balance flexor/extensor de rodilla y estabilización lateral.",
     isRest: false,
     warmup: {
       title: "🧠 Warm Up / Activación Biomecánica",
       insights: {
-        objective: "Estimular la movilidad glenohumeral y activar el core profundo.",
-        tips: "Sostener bastón liviano con agarre ancho, subir al frente sin dolor.",
-        strategy: "Espalda baja totalmente pegada al suelo en el bicho muerto."
+        objective: "Flexibilidad dinámica lumbopélvica previa al patrón de bisagra.",
+        tips: "Gato-camello coordinado estrictamente con el ciclo respiratorio.",
+        strategy: "Fijar abductores para asegurar rodillas estables."
       },
       exercises: [
-        { name: "A1. Disociación de Hombros y Círculos con Bastón", sub: "Movilidad controlada ascendente sin forzar rangos dolorosos.", reps: "5 a 8 minutos", detail: "Pausa: Fluido" },
-        { name: "A2. 'Dead Bug' (Bicho Muerto) Modificado", sub: "Mover brazo y pierna contraria de forma rítmica y pausada.", reps: "2 x 8 por lado", detail: "Pausa: 60s / Control" }
+        { name: "A1. Movilidad de Cadera en Cuadrupedia", sub: "Gato-camello controlado arqueando suavemente columna.", reps: "5 a 8 minutos", detail: "Pausa: Fluida" },
+        { name: "A2. Abducciones de Cadera De Pie con Banda", sub: "Patada lateral corta con banda elástica sobre los tobillos.", reps: "2 x 10 por pierna", detail: "Pausa: 45s" }
       ]
     },
     main: {
-      title: "🏋️‍♂️ Fuerza de Deltoides Funcional",
+      title: "🏋️‍♂️ Patrones de Cadera e Isometría de Rodilla",
       insights: {
-        objective: "Fuerza funcional del deltoides de forma segura y controlada.",
-        tips: "Sentado erguido. Elevar mancuernas ligeras a los lados. Exhalar al subir.",
-        strategy: "Apertura escapular hacia los lados juntando omóplatos."
+        objective: "Fortalecer isquiosurales, glúteos y vastos musculares sin fatiga espinal axial.",
+        tips: "Llevar la cola atrás en el Peso Muerto. Pelvis clavada en el sillón de cuádriceps.",
+        strategy: "La prensa inclinada con intersets unilaterales desafía la simetría sin riesgo de caídas."
       },
       exercises: [
-        { name: "B1. Elevaciones Laterales con Mancuerna (Sentado)", sub: "Elevaciones laterales controlando tanto subida como bajada.", reps: "3 x 12-15 reps", detail: "<b>RPE 6</b><br>Pausa: 90s" },
-        { name: "B2. Vuelos Posteriores con Banda Elástica (Pájaros)", sub: "Brazos estirados al frente abriendo hacia los costados.", reps: "3 x 12 reps", detail: "<b>RPE 6</b><br>Pausa: 60-90s" }
+        { name: "B1. Peso Muerto Rumano con Mancuerras Ligeras", sub: "Desplazar pelvis atrás manteniendo mancuernas pegadas al muslo. <b>Interset:</b> 20 abducciones de cadera en máquina sentado.", reps: "3 series x 10 reps", detail: "<b>Tempo: 3.1.1.0 | RPE 6</b><br>Pausa: 90s" },
+        { name: "B2. Curl Cuádriceps en Sillón + Curl Femoral Acostado", sub: "Biserie analítica combinando la cara delantera y trasera de la pierna.", reps: "3-4 series x 12 reps", detail: "<b>Tempo: 2.0.1.2 | RPE 6-7</b><br>Pausa: 75s" },
+        { name: "B3. Prensa de Piernas Horizontal", sub: "Pies altos y separados en plataforma. <b>Interset:</b> Realizar inmediatamente 8/8 repeticiones unilaterales de control.", reps: "3 series x 12 reps", detail: "<b>Tempo: 3.0.1.0 | RPE 6-7</b><br>Pausa: 90s" }
       ]
     },
     metcon: {
-      title: "⏱️ Manguito Rotador / Cardio Continuo",
+      title: "⏱️ Escudo Core Isométrico",
       insights: {
-        objective: "Blindar el manguito rotador y mantener volumen aeróbico consistente.",
-        tips: "Codos pegados a las costillas a 90°. Abrir manos de forma lenta.",
-        strategy: "Esfuerzo moderado lineal y controlado para salud cardiovascular."
+        objective: "Fijación activa del cinturón abdominal profundo de manera segura.",
+        tips: "Contraer cuádriceps y glúteos de forma intensa durante la plancha.",
+        strategy: "El uso del banco inclinado reduce la palanca de esfuerzo cardíaco agudo."
       },
       exercises: [
-        { name: "C1. Rotación Externa de Hombro con Banda", sub: "Rotaciones estrictas con tensión ligera a moderada.", reps: "3 x 12 reps", detail: "Pausa: 60s" },
-        { name: "D1. Bici Fija o Elíptica (Zona 2)", sub: "Volumen metabólico de base a pulsaciones controladas.", reps: "20 a 30 minutos", detail: "Ritmo Constante" }
+        { name: "C1. Plancha Isométrica Modificada Elevada", sub: "Apoyo de antebrazos en banco inclinado (o Fitball) sosteniendo bloque rígido.", reps: "3 series x 20-30 segundos", detail: "Pausa: 60s" }
       ]
     }
   },
   {
     id: "viernes",
     title: "DÍA 5 — Fullbody Funcional",
-    subtitle: "Integración Semanal y Retorno a la Calma",
+    subtitle: "Integración de Cadenas Cinéticas",
     discipline: "Musculación",
     disciplineSlug: "Musculación",
     level: "Fullbody Funcional",
     levelSlug: "Fullbody_Funcional",
-    desc: "Estímulo integral sistémico para consolidar las adaptaciones motoras de la semana completa.",
+    desc: "Coordinación global intermuscular, caminatas antigravitatorias y vaciado láctico terminal.",
     isRest: false,
     warmup: {
       title: "🧠 Warm Up / Activación Biomecánica",
       insights: {
-        objective: "Activación sistémica global y redistribución progresiva del flujo sanguíneo.",
-        tips: "Caminar suave abriendo/cerrando el pecho de manera libre.",
-        strategy: "Despertar la cadena posterior previo al bloque integrado."
+        objective: "Activación sistémica global para redistribuir el flujo circulatorio.",
+        tips: "Paso de caminata continuo abriendo y cerrando los brazos de manera natural.",
+        strategy: "Preparación cardiovascular integrada antes de los bucles funcionales."
       },
       exercises: [
-        { name: "A1. Caminata Lenta con Movilidad de Brazos", sub: "Caminata rítmica sincronizada con movimientos articulares.", reps: "5 minutos", detail: "Pausa: Continuo" },
-        { name: "A2. Puentes de Glúteo (Peso Corporal)", sub: "Separar cadera del suelo apretando glúteos arriba.", reps: "2 x 10 reps", detail: "Pausa: 60s / Suave" }
+        { name: "A1. Caminata Lenta con Movilidad Libre de Brazos", sub: "Caminata de activación en espacio libre combinando braceos circulares.", reps: "5 minutos continuos", detail: "Pausa: Continua" }
       ]
     },
     main: {
-      title: "🏋️‍♂️ Fuerza Integrada Multiarticular",
+      title: "🏋️‍♂️ Bloques de Integración Multiarticular",
       insights: {
-        objective: "Sostener mancuerna vertical contra el pecho, sentarse controlado y subir firme.",
-        tips: "La carga frontal ayuda a mantener el torso erguido de forma refleja.",
-        strategy: "Fuerza dorsal unilateral manteniendo la columna completamente protegida."
+        objective: "Conectar piernas, espalda y brazos bajo una misma secuencia coordinada.",
+        tips: "La carga frontal del goblet asiste la verticalidad del torso. Espalda recta en el remo banco.",
+        strategy: "El interset de Remo T parciales agota fibras dorsales sin demandas axiales peligrosas."
       },
       exercises: [
-        { name: "B1. Sentadilla Goblet Sostenida a la Silla (DB Ligera)", sub: "Descenso de 3 segundos guiado antes del apoyo parcial.", reps: "3 x 8-10 reps", detail: "<b>RPE 6</b><br>Pausa: 90s" },
-        { name: "B2. Remo a una Mano con Apoyo en Banco", sub: "Apoyar mano y rodilla en el banco. Traccionar hacia el bolsillo.", reps: "3 x 10 x lado", detail: "<b>RPE 6</b><br>Pausa: 60-90s" }
+        { name: "B1. Sentadilla Goblet a la Silla + Press Frontal", sub: "Bajar controlado (3s) a la silla y al subir extender carga al frente. <b>Interset:</b> 10 Remo T + 10 parciales terminales arriba.", reps: "3 series x 12 reps", detail: "<b>Tempo: 3.1.1.0 | RPE 6</b><br>Pausa: 90s" },
+        { name: "B2. Remo a una Mano con Mancuerna en Banco Plano", sub: "Mano y rodilla apoyadas, guiar codo hacia la cadera de forma fluida. <b>Interset:</b> 12/12 extensiones unilaterales tríceps mancuerna.", reps: "3-4 series x 10 por lado", detail: "<b>Tempo: 2.0.1.1 | RPE 6</b><br>Pausa: 60s" }
       ]
     },
     metcon: {
-      title: "⏱️ Estabilidad de Marcha / Descompresión Final",
+      title: "⏱️ Trabajo Postural Antigravitatorio / Descompresión",
       insights: {
-        objective: "Fuerza de agarre, estabilidad postural en marcha y retorno a la calma obligatorio.",
-        tips: "Mancuerna ligera en cada mano, caminar erguido mirando al frente.",
-        strategy: "Últimos 5 minutos del cardio deben ser extremadamente lentos."
+        objective: "Desarrollo de fuerza de agarre, control de core en marcha y desaceleración cardiovascular obligatoria.",
+        tips: "En el Gun Walk mantener los codos bloqueados estrictos a 90°. El cardio final es mandatorio.",
+        strategy: "La reducción escalonada de intensidad en los últimos 5 minutos evita hipotensión súbita."
       },
       exercises: [
-        { name: "C1. Paseo del Granjero Modificado (Farmer's Walk)", sub: "Caminata pausada prestando atención a la postura erguida.", reps: "3 x 30 metros", detail: "Pausa: 60s / Postural" },
-        { name: "C2. Curl de Bíceps con Banda Elástica (De Pie)", sub: "Pisar banda firmemente y flexionar codos hacia hombros.", reps: "3 x 12 reps", detail: "Pausa: 60s" },
-        { name: "D1. Cinta o Bici - Retorno a la Calma Obligatorio", sub: "Disminución progresiva de pulsaciones para evitar hipotensión.", reps: "15 a 20 minutos", detail: "RPE 5 -> Decreciente" }
+        { name: "B3. Farmer's Walk Modificado + Gun Walk", sub: "Caminata transportando mancuernas moderadas a los lados + caminata isométrica con codos flexionados a 90°.", reps: "3 series x 30 metros por variante", detail: "<b>RPE 6</b><br>Pausa: 60s" },
+        { name: "C1. Crunches Abdominales Cortos en Colchoneta", sub: "Elevar únicamente escápulas despegándolas del suelo un par de centímetros, mirada arriba.", reps: "3 x 10-12 reps", detail: "Pausa: 45s" }
       ]
     }
   },
@@ -498,12 +497,12 @@ const workouts = [
     restBlock: {
       title: "🛋️ Protocolo de Recuperación y Oxigenación",
       insights: {
-        objective: "Promover la circulación de nutrientes y permitir el descanso adaptativo.",
-        tips: "Caminar de forma relajada en un entorno agradable.",
-        strategy: "Desconexión completa de cargas pesadas axiales."
+        objective: "Promover la circulación de nutrientes y permitir el descanso adaptativo celular.",
+        tips: "Caminar de forma relajada en un entorno libre de estrés.",
+        strategy: "Desconexión completa de cargas pesadas axiales o entrenamientos estructurales."
       },
       exercises: [
-        { name: "Caminata Regenerativa Libre (Opcional)", description: "Paseo ligero continuo sin agitación respiratoria.", pauta: "20 a 30 minutos", rest: "Totalmente Libre" }
+        { name: "Caminata Regenerativa Libre (Opcional)", sub: "Paseo ligero continuo sin agitación respiratoria y de ritmo conversacional.", pauta: "20 a 30 minutos", rest: "Totalmente Libre" }
       ]
     }
   },
@@ -520,12 +519,12 @@ const workouts = [
     restBlock: {
       title: "🛋️ Descanso Pasivo Total",
       insights: {
-        objective: "Recuperación central del sistema nervioso.",
-        tips: "Evitar actividades físicas que impliquen fatiga.",
-        strategy: "Disfrutar del reposo y la alimentación equilibrada."
+        objective: "Recuperación central del sistema nervioso y balance general.",
+        tips: "Evitar actividades físicas que impliquen fatiga o deplesión glucogénica.",
+        strategy: "Disfrutar del reposo familiar, ocio reconstructivo y alimentación equilibrada."
       },
       exercises: [
-        { name: "Reposo y Desconexión Central", description: "Día libre completo para asegurar la longevidad del plan.", pauta: "24 Horas", rest: "Pasivo Absoluto" }
+        { name: "Reposo y Desconexión Central Mandatoria", sub: "Día libre completo para asegurar la longevidad del plan deportivo de Carlos.", pauta: "24 Horas", rest: "Pasivo Absoluto" }
       ]
     }
   }
