@@ -238,8 +238,23 @@
   .sub-title-tag { font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; margin-right: 4px; }
   .sub-title-tag.coaching { color: var(--gold); }
   .sub-title-tag.medical { color: #FF5252; background: rgba(255,82,82,0.08); padding: 1px 6px; border-radius: 4px; display: inline-block; margin-top: 4px; }
-  .video-link { color: var(--gold); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; font-size: 12.5px; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255,214,0,0.3); padding-bottom: 1px; }
+  .video-link { color: var(--gold); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; font-size: 12.5px; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255,214,0,0.3); padding-bottom: 1px; cursor: pointer; }
   .video-link:hover { color: var(--fire-glow); border-color: var(--fire-glow); }
+  .video-popup-wrap { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 300; width: 320px; max-width: calc(100vw - 32px); }
+  .video-popup-wrap.open { display: block; }
+  .video-popup { position: relative; background: #121214; border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 16px 44px rgba(0,0,0,0.6); animation: videoPopIn 0.22s cubic-bezier(0.16,1,0.3,1); }
+  @keyframes videoPopIn { from { transform: translateY(16px) scale(0.96); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+  .video-popup-header { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px 8px 12px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-secondary); }
+  .video-popup-close { background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text-secondary); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 11px; line-height: 1; transition: all 0.2s ease; flex-shrink: 0; }
+  .video-popup-close:hover { background: var(--fire); border-color: var(--fire); color: #fff; }
+  .video-popup-frame { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
+  .video-popup-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-popup-fallback { padding: 7px 12px; background: rgba(255,255,255,0.02); border-top: 1px solid var(--border); font-size: 11.5px; color: var(--text-muted); text-align: center; }
+  .video-popup-fallback a { color: var(--gold); font-weight: 600; text-decoration: none; }
+  .video-popup-fallback a:hover { color: var(--fire-glow); }
+  @media (max-width: 640px) {
+    .video-popup-wrap { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; }
+  }
   .exercise-detail { font-size: 13.5px; color: var(--text-secondary); text-align: right; max-width: 30%; line-height: 1.5; background: rgba(255,255,255,0.02); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border); min-width: 130px; }
   .exercise-detail b { display: block; color: var(--gold); font-weight: 700; font-size: 15px; margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; text-align: center; }
   .modal-footer { padding: 1.25rem 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 0.75rem; background: #121214; flex-shrink: 0; }
@@ -348,6 +363,18 @@
     </div>
   </div>
 </div>
+<div class="video-popup-wrap" id="video-popup-wrap">
+  <div class="video-popup">
+    <div class="video-popup-header">
+      <span>Técnica del ejercicio</span>
+      <button class="video-popup-close" id="video-popup-close" aria-label="Cerrar video">&#x2715;</button>
+    </div>
+    <div class="video-popup-frame">
+      <iframe id="video-popup-iframe" src="" title="Video técnica de ejercicio" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-popup-fallback">¿No carga? <a id="video-popup-fallback-link" href="#" target="_blank" rel="noopener">Abrilo en YouTube ↗</a></div>
+  </div>
+</div>
 <script>
 const ATHLETE_CONFIG = {
   name: "Carlos Alderetes",
@@ -381,19 +408,19 @@ const workouts = [
         "name": "Bloque 1: Press de pecho en el suelo (Dumbbell Floor Press)",
         "reps": "4 series x 10 a 12 rep.",
         "detail": "<b>Tempo 3.1.1.0</b><br>RPE 6.5 · Descanso 90s",
-        "sub": "Al ejecutarse en el suelo limitamos la extensión profunda del hombro, protegiendo la articulación y manteniendo la estabilidad torácica sin fatiga axial. Los tríceps deben tocar el piso suavemente, jamás dejes caer los pesos por cansancio. <a class='video-link' href='https://www.youtube.com/watch?v=tXv-rEa5xn8' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "Al ejecutarse en el suelo limitamos la extensión profunda del hombro, protegiendo la articulación y manteniendo la estabilidad torácica sin fatiga axial. Los tríceps deben tocar el piso suavemente, jamás dejes caer los pesos por cansancio. <a class='video-link' href='javascript:void(0)' data-yt='tXv-rEa5xn8'>▶ Ver técnica en video</a>"
       },
       {
         "name": "Bloque 2: Superserie Pluriarticular de Empuje y Core",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60s post-ronda",
-        "sub": "<span class='sub-block-title'>A1</span> Press de pecho en máquina = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=JXJmPXlqwh0' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Plancha abdominal tradicional (Plank) = 30 a 45 segundos. <a class='video-link' href='https://www.youtube.com/watch?v=xe2MXatLTUw' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Empuje guiado acoplado a un bloque de estabilidad isométrica, respirando de forma continua.</span>"
+        "sub": "<span class='sub-block-title'>A1</span> Press de pecho en máquina = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='JXJmPXlqwh0'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Plancha abdominal tradicional (Plank) = 30 a 45 segundos. <a class='video-link' href='javascript:void(0)' data-yt='xe2MXatLTUw'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Empuje guiado acoplado a un bloque de estabilidad isométrica, respirando de forma continua.</span>"
       },
       {
         "name": "Bloque 3: Triserie Estética de Aislamiento y Tríceps",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60 segundos",
-        "sub": "<span class='sub-block-title'>B1</span> Flexiones de brazos (Push-ups) = máximas repeticiones técnicamente perfectas. <a class='video-link' href='https://www.youtube.com/watch?v=4Bc1tPaYkOo' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Cable Triceps Pushdown (Extensión en polea alta) = 12 a 16 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=1FjkhpZsaxc' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> AbMat Sit-up = 12 a 15 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=_HDZODOx7Zw' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "<span class='sub-block-title'>B1</span> Flexiones de brazos (Push-ups) = máximas repeticiones técnicamente perfectas. <a class='video-link' href='javascript:void(0)' data-yt='4Bc1tPaYkOo'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Cable Triceps Pushdown (Extensión en polea alta) = 12 a 16 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='1FjkhpZsaxc'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> AbMat Sit-up = 12 a 15 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='_HDZODOx7Zw'>▶ Ver técnica en video</a>"
       }
     ],
     "metcon": [
@@ -401,13 +428,13 @@ const workouts = [
         "name": "Bloque 4: Finisher de Extensores Oclusivo",
         "reps": "3 series efectivas",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "<span class='sub-block-title'>C1</span> Extensiones de tríceps en polea alta con soga = 15 repeticiones controladas. <a class='video-link' href='https://www.youtube.com/watch?v=1FoWlRS2Edc' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Semana 2 y 3: sumar una 4ª serie al fallo técnico. El volumen extra aprovecha la pre-fatiga generada por los empujes principales del pectoral.</span>"
+        "sub": "<span class='sub-block-title'>C1</span> Extensiones de tríceps en polea alta con soga = 15 repeticiones controladas. <a class='video-link' href='javascript:void(0)' data-yt='1FoWlRS2Edc'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Semana 2 y 3: sumar una 4ª serie al fallo técnico. El volumen extra aprovecha la pre-fatiga generada por los empujes principales del pectoral.</span>"
       },
       {
         "name": "Bloque 5: Núcleo y Estabilidad Estática Final",
         "reps": "2 series x 30s",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "Corework: Plancha abdominal tradicional (Plank) = contracción isométrica rígida. <a class='video-link' href='https://www.youtube.com/watch?v=xe2MXatLTUw' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Priorizá la rigidez de la cadena anterior sin compensar con la zona lumbar.</span>"
+        "sub": "Corework: Plancha abdominal tradicional (Plank) = contracción isométrica rígida. <a class='video-link' href='javascript:void(0)' data-yt='xe2MXatLTUw'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Priorizá la rigidez de la cadena anterior sin compensar con la zona lumbar.</span>"
       }
     ],
     "technicalAnalysis": {
@@ -437,19 +464,19 @@ const workouts = [
         "name": "Bloque 1: Jalón al pecho en polea alta prono",
         "reps": "4 series x 10 a 12 rep.",
         "detail": "<b>Tempo 2.1.1.0</b><br>RPE 7 · Descanso 90s",
-        "sub": "Estímulo vertical seguro para la postura superior y el reclutamiento del dorsal ancho. Iniciá el movimiento deprimiendo las escápulas, no tironeando con los brazos. <a class='video-link' href='https://www.youtube.com/watch?v=W2x6zP9k7SM' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "Estímulo vertical seguro para la postura superior y el reclutamiento del dorsal ancho. Iniciá el movimiento deprimiendo las escápulas, no tironeando con los brazos. <a class='video-link' href='javascript:void(0)' data-yt='W2x6zP9k7SM'>▶ Ver técnica en video</a>"
       },
       {
         "name": "Bloque 2: Superserie de Tracción",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60s post-ronda",
-        "sub": "<span class='sub-block-title'>A1</span> Iso-Lateral Row Machine (Remo articulado en máquina) = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=9fjWEAwdvjQ' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Curl de isquiotibiales en máquina (sillón) = 12 a 15 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=lGNeJsdqJwg' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "<span class='sub-block-title'>A1</span> Iso-Lateral Row Machine (Remo articulado en máquina) = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='9fjWEAwdvjQ'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Curl de isquiotibiales en máquina (sillón) = 12 a 15 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='lGNeJsdqJwg'>▶ Ver técnica en video</a>"
       },
       {
         "name": "Bloque 3: Triserie Postural y Flexores de Codo",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60 segundos",
-        "sub": "<span class='sub-block-title'>B1</span> Close Grip Lat Pulldown (Jalón agarre cerrado) = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=jXRxMJhOCc0' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Curl de bíceps con barra recta de pie (o barra W) = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=-gSM-kqNlUw' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> Sentadilla Goblet con mancuerna o KB = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=PP4XRTIIyRI' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B4</span> Gemelos sentado en máquina = 15 a 20 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=8BkvUI5i3EY' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "<span class='sub-block-title'>B1</span> Close Grip Lat Pulldown (Jalón agarre cerrado) = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='jXRxMJhOCc0'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Curl de bíceps con barra recta de pie (o barra W) = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='-gSM-kqNlUw'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> Sentadilla Goblet con mancuerna o KB = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='PP4XRTIIyRI'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B4</span> Gemelos sentado en máquina = 15 a 20 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='8BkvUI5i3EY'>▶ Ver técnica en video</a>"
       }
     ],
     "metcon": [
@@ -457,13 +484,13 @@ const workouts = [
         "name": "Bloque 4: Finisher de Flexores en Supinación",
         "reps": "3 series efectivas",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "<span class='sub-block-title'>C1</span> Curl de bíceps supino con mancuernas (rotación estricta) = 12 a 15 repeticiones de pie, controlando la bajada. <a class='video-link' href='https://www.youtube.com/watch?v=MKWBV29S6c0' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Semana 2 y 3: sumar una 4ª serie al fallo técnico.</span>"
+        "sub": "<span class='sub-block-title'>C1</span> Curl de bíceps supino con mancuernas (rotación estricta) = 12 a 15 repeticiones de pie, controlando la bajada. <a class='video-link' href='javascript:void(0)' data-yt='MKWBV29S6c0'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Semana 2 y 3: sumar una 4ª serie al fallo técnico.</span>"
       },
       {
         "name": "Bloque 5: Núcleo y Control Dinámico Final",
         "reps": "2 series x 12 rep./lado",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "Corework: Cable Woodchopper (Leñador en polea) = repeticiones lentas y concentradas por lado + 20-30s de plank. <a class='video-link' href='https://www.youtube.com/watch?v=_yaPTxjJpwg' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "Corework: Cable Woodchopper (Leñador en polea) = repeticiones lentas y concentradas por lado + 20-30s de plank. <a class='video-link' href='javascript:void(0)' data-yt='_yaPTxjJpwg'>▶ Ver técnica en video</a>"
       }
     ],
     "technicalAnalysis": {
@@ -493,19 +520,19 @@ const workouts = [
         "name": "Bloque 1: Press militar de pie con barra (OHP) o mancuernas",
         "reps": "4 series x 8 a 10 rep.",
         "detail": "<b>RPE 6.5</b><br>Descanso 90 segundos",
-        "sub": "Estímulo de empuje vertical estricto, cuidando de no hiperextender la espalda baja. <a class='video-link' href='https://www.youtube.com/watch?v=zoN5EH50Dro' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "Estímulo de empuje vertical estricto, cuidando de no hiperextender la espalda baja. <a class='video-link' href='javascript:void(0)' data-yt='zoN5EH50Dro'>▶ Ver técnica en video</a>"
       },
       {
         "name": "Bloque 2: Superserie de Tracción de Hombro y Tríceps",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60 segundos",
-        "sub": "<span class='sub-block-title'>A1</span> Face Pull en polea alta con soga = 15 repeticiones controladas. <a class='video-link' href='https://www.youtube.com/watch?v=IeOqdw9WI90' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> EZ Bar Lying Triceps Extension (Press francés en banco) = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=K3mFeNz4e3w' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "<span class='sub-block-title'>A1</span> Face Pull en polea alta con soga = 15 repeticiones controladas. <a class='video-link' href='javascript:void(0)' data-yt='IeOqdw9WI90'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> EZ Bar Lying Triceps Extension (Press francés en banco) = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='K3mFeNz4e3w'>▶ Ver técnica en video</a>"
       },
       {
         "name": "Bloque 3: Triserie Estética de Brazos Completa",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60 segundos",
-        "sub": "<span class='sub-block-title'>B1</span> Vuelos laterales con mancuernas de pie = 15 repeticiones estrictas. <a class='video-link' href='https://www.youtube.com/watch?v=Kl3LEzQ5Zqs' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Curl de bíceps tipo martillo con mancuernas = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=fM0TQLoesLs' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> Cable Triceps Pushdown (Extensión en polea alta) = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=1FjkhpZsaxc' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "<span class='sub-block-title'>B1</span> Vuelos laterales con mancuernas de pie = 15 repeticiones estrictas. <a class='video-link' href='javascript:void(0)' data-yt='Kl3LEzQ5Zqs'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Curl de bíceps tipo martillo con mancuernas = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='fM0TQLoesLs'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> Cable Triceps Pushdown (Extensión en polea alta) = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='1FjkhpZsaxc'>▶ Ver técnica en video</a>"
       }
     ],
     "metcon": [
@@ -513,7 +540,7 @@ const workouts = [
         "name": "Bloque 4: Finisher de Flexores y Control de Agarre",
         "reps": "3 series efectivas",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "<span class='sub-block-title'>C1</span> Curl de bíceps de pie con barra recta o barra W = 8 repeticiones estrictas, carga moderada a pesada. <a class='video-link' href='https://www.youtube.com/watch?v=-gSM-kqNlUw' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Se puede sumar una 4ª serie más liviana opcional, al fallo técnico.</span>"
+        "sub": "<span class='sub-block-title'>C1</span> Curl de bíceps de pie con barra recta o barra W = 8 repeticiones estrictas, carga moderada a pesada. <a class='video-link' href='javascript:void(0)' data-yt='-gSM-kqNlUw'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Se puede sumar una 4ª serie más liviana opcional, al fallo técnico.</span>"
       },
       {
         "name": "Bloque 5: Núcleo y Estabilidad Isométrica Final",
@@ -549,19 +576,19 @@ const workouts = [
         "name": "Bloque 1: Remo con barra en T (T-Bar Row) o máquina articulada",
         "reps": "4 series x 10 rep.",
         "detail": "<b>Tempo 2.1.1.0</b><br>RPE 7 · Descanso 90s",
-        "sub": "Reemplazamos el remo sentado tradicional por variante en T o máquina articulada pesada, aislando el balanceo lumbar. Mantené la columna recta; no curves la espalda alta para rascar más rango. <a class='video-link' href='https://www.youtube.com/watch?v=edZUQEV8DBQ' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "Reemplazamos el remo sentado tradicional por variante en T o máquina articulada pesada, aislando el balanceo lumbar. Mantené la columna recta; no curves la espalda alta para rascar más rango. <a class='video-link' href='javascript:void(0)' data-yt='edZUQEV8DBQ'>▶ Ver técnica en video</a>"
       },
       {
         "name": "Bloque 2: Superserie de Tracción Unilateral y Empuje Cerrado",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60s post-ronda",
-        "sub": "<span class='sub-block-title'>A1</span> Remo unilateral con mancuerna = 10 repeticiones por lado. <a class='video-link' href='https://www.youtube.com/watch?v=vu_YDt9nGv4' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Close Grip Bench Press (Press banca agarre cerrado) = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=xXd7sddHGa0' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "<span class='sub-block-title'>A1</span> Remo unilateral con mancuerna = 10 repeticiones por lado. <a class='video-link' href='javascript:void(0)' data-yt='vu_YDt9nGv4'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Close Grip Bench Press (Press banca agarre cerrado) = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='xXd7sddHGa0'>▶ Ver técnica en video</a>"
       },
       {
         "name": "Bloque 3: Triserie Postural, Bíceps y Abdomen",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60 segundos",
-        "sub": "<span class='sub-block-title'>B1</span> Remo en máquina articulada unilateral = 12 repeticiones por lado. <a class='video-link' href='https://www.youtube.com/watch?v=sYl2uUE7kt0' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Curl de bíceps tipo martillo con mancuernas = 12 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=fM0TQLoesLs' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> DB Romanian Deadlift (Peso muerto rumano con mancuernas) = 12 repeticiones estrictas. <a class='video-link' href='https://www.youtube.com/watch?v=hu3jRvTc_po' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "<span class='sub-block-title'>B1</span> Remo en máquina articulada unilateral = 12 repeticiones por lado. <a class='video-link' href='javascript:void(0)' data-yt='sYl2uUE7kt0'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Curl de bíceps tipo martillo con mancuernas = 12 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='fM0TQLoesLs'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> DB Romanian Deadlift (Peso muerto rumano con mancuernas) = 12 repeticiones estrictas. <a class='video-link' href='javascript:void(0)' data-yt='hu3jRvTc_po'>▶ Ver técnica en video</a>"
       }
     ],
     "metcon": [
@@ -575,7 +602,7 @@ const workouts = [
         "name": "Bloque 5: Núcleo y Estabilidad Estática Final",
         "reps": "2 a 3 series x 20 rep.",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "Corework: Single Leg V-ups — variante unilateral que suma un componente antirotacional a la flexión de cadera y tronco. <a class='video-link' href='https://www.youtube.com/watch?v=7UVgs18Y1P4' target='_blank' rel='noopener'>▶ Ver técnica en video</a>"
+        "sub": "Corework: Single Leg V-ups — variante unilateral que suma un componente antirotacional a la flexión de cadera y tronco. <a class='video-link' href='javascript:void(0)' data-yt='7UVgs18Y1P4'>▶ Ver técnica en video</a>"
       }
     ],
     "technicalAnalysis": {
@@ -611,13 +638,13 @@ const workouts = [
         "name": "Bloque 2: Superserie de Extensión Unilateral e Isometría",
         "reps": "3 a 4 vueltas",
         "detail": "<b>Descanso</b><br>60s post-ronda",
-        "sub": "<span class='sub-block-title'>A1</span> Extensiones de cuádriceps unilaterales con pausa isométrica = 10 repeticiones por lado, sosteniendo 1 segundo arriba. <a class='video-link' href='https://www.youtube.com/watch?v=iCTEuOnr8H8' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Sissy Squat = 12 a 15 repeticiones."
+        "sub": "<span class='sub-block-title'>A1</span> Extensiones de cuádriceps unilaterales con pausa isométrica = 10 repeticiones por lado, sosteniendo 1 segundo arriba. <a class='video-link' href='javascript:void(0)' data-yt='iCTEuOnr8H8'>▶ Ver técnica en video</a><br><span class='sub-block-title'>A2</span> Sissy Squat = 12 a 15 repeticiones."
       },
       {
         "name": "Bloque 3: Triserie de Pantorrillas y Circulación Periférica",
         "reps": "4 series completas",
         "detail": "<b>Alto volumen</b><br>Descanso 60s",
-        "sub": "<span class='sub-block-title'>B1</span> Elevación de talones de pie en Smith = 15 a 20 repeticiones completas. <a class='video-link' href='https://www.youtube.com/watch?v=-IURfiupLoE' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Elevación de talones sentado (Sóleos en máquina) = 20 repeticiones. <a class='video-link' href='https://www.youtube.com/watch?v=8BkvUI5i3EY' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> Elevaciones de talones sin peso corporal en Step = máximas repeticiones fluidas por quemazón."
+        "sub": "<span class='sub-block-title'>B1</span> Elevación de talones de pie en Smith = 15 a 20 repeticiones completas. <a class='video-link' href='javascript:void(0)' data-yt='-IURfiupLoE'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B2</span> Elevación de talones sentado (Sóleos en máquina) = 20 repeticiones. <a class='video-link' href='javascript:void(0)' data-yt='8BkvUI5i3EY'>▶ Ver técnica en video</a><br><span class='sub-block-title'>B3</span> Elevaciones de talones sin peso corporal en Step = máximas repeticiones fluidas por quemazón."
       }
     ],
     "metcon": [
@@ -625,13 +652,13 @@ const workouts = [
         "name": "Bloque 4: Finisher de Extensores de Pierna",
         "reps": "3 series efectivas",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "<span class='sub-block-title'>C1</span> Leg Extension Machine (Extensiones de cuádriceps bilaterales) = 15 repeticiones controlando la fase negativa. <a class='video-link' href='https://www.youtube.com/watch?v=uM86QE59Tgc' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Sumar una 4ª serie al fallo técnico.</span>"
+        "sub": "<span class='sub-block-title'>C1</span> Leg Extension Machine (Extensiones de cuádriceps bilaterales) = 15 repeticiones controlando la fase negativa. <a class='video-link' href='javascript:void(0)' data-yt='uM86QE59Tgc'>▶ Ver técnica en video</a><br><span class='sub-section'><span class='sub-title-tag coaching'>💡 TIP:</span>Sumar una 4ª serie al fallo técnico.</span>"
       },
       {
         "name": "Bloque 5: Núcleo y Control Dinámico Final",
         "reps": "3 series x 12 rep.",
         "detail": "<b>Descanso</b><br>45 segundos",
-        "sub": "<span class='sub-block-title'>D1</span> Jackknife Sit-ups = repeticiones lentas. <a class='video-link' href='https://www.youtube.com/watch?v=zBgqqe9pWJ0' target='_blank' rel='noopener'>▶ Ver técnica en video</a><br><span class='sub-block-title'>D2</span> Plank Step Up = 10 repeticiones."
+        "sub": "<span class='sub-block-title'>D1</span> Jackknife Sit-ups = repeticiones lentas. <a class='video-link' href='javascript:void(0)' data-yt='zBgqqe9pWJ0'>▶ Ver técnica en video</a><br><span class='sub-block-title'>D2</span> Plank Step Up = 10 repeticiones."
       }
     ],
     "technicalAnalysis": {
@@ -882,6 +909,7 @@ function openModal(w, triggerEl) {
 }
 function handleModalKeydown(e) {
   if (e.key === 'Escape') {
+    if (isVideoPopupOpen()) { closeVideoPopup(); return; }
     closeModal();
     return;
   }
@@ -899,6 +927,7 @@ function handleModalKeydown(e) {
   }
 }
 function closeModal() {
+  closeVideoPopup();
   document.getElementById('overlay').classList.remove('open');
   document.removeEventListener('keydown', handleModalKeydown);
   if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
@@ -909,6 +938,37 @@ document.getElementById('modal-close').addEventListener('click', closeModal);
 document.querySelectorAll('.btn-close-modal').forEach(btn => btn.addEventListener('click', closeModal));
 document.getElementById('overlay').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
+});
+// ---- Video popup: reproduce la técnica sin salir de la página ni perder el modal/scroll actual ----
+function isVideoPopupOpen() {
+  const wrap = document.getElementById('video-popup-wrap');
+  return !!(wrap && wrap.classList.contains('open'));
+}
+function openVideoPopup(videoId) {
+  if (!videoId) return;
+  const wrap = document.getElementById('video-popup-wrap');
+  const iframe = document.getElementById('video-popup-iframe');
+  const fallbackLink = document.getElementById('video-popup-fallback-link');
+  // youtube-nocookie.com: dominio "modo privado" de YouTube, mucho menos afectado por
+  // adblockers/extensiones de privacidad que suelen bloquear el embed clásico de youtube.com.
+  iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+  if (fallbackLink) fallbackLink.href = 'https://www.youtube.com/watch?v=' + videoId;
+  wrap.classList.add('open');
+}
+function closeVideoPopup() {
+  const wrap = document.getElementById('video-popup-wrap');
+  const iframe = document.getElementById('video-popup-iframe');
+  if (!wrap || !wrap.classList.contains('open')) return;
+  iframe.src = ''; // corta la reproducción al cerrar
+  wrap.classList.remove('open');
+}
+document.getElementById('video-popup-close').addEventListener('click', closeVideoPopup);
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('.video-link');
+  if (!link) return;
+  e.preventDefault();
+  e.stopPropagation();
+  openVideoPopup(link.getAttribute('data-yt'));
 });
 document.querySelectorAll('.week-btn').forEach(btn => {
   btn.addEventListener('click', async () => {
