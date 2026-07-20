@@ -287,11 +287,25 @@
   .exercise-title-container { display: flex; align-items: flex-start; gap: 12px; flex: 1; max-width: 70%; }
 
   .exercise-name { font-weight: 700; font-size: 1.15rem; color: var(--text-primary); letter-spacing: 0.01em; }
-  .exercise-name sub { display: block; font-size: 14px; color: var(--text-secondary); font-style: normal; margin-top: 8px; line-height: 1.6; font-family: 'Inter', sans-serif; }
-  .exercise-name sub b { color: var(--text-primary); font-weight: 600; }
+  .exercise-explain-wrap { display: block; font-size: 14px; color: var(--text-secondary); font-style: normal; margin-top: 10px; line-height: 1.6; font-family: 'Inter', sans-serif; }
+  .exercise-explain-wrap b { color: var(--text-primary); font-weight: 600; }
+
+  /* Lista ordenada de ejercicios dentro de bloques combinados (superserie/triserie/biserie) */
+  .combo-exercise-list { display: flex; flex-direction: column; gap: 8px; }
+  .combo-exercise-item { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 9px 12px; }
+  .combo-tag { font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; color: var(--violet-light); background: rgba(124,77,255,0.12); padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
+  .combo-exercise-info { flex: 1; min-width: 160px; display: flex; flex-direction: column; gap: 3px; }
+  .combo-exercise-name { font-weight: 600; font-size: 14px; color: var(--text-primary); line-height: 1.35; }
+  .combo-exercise-reps { font-size: 12.5px; color: var(--gold); font-weight: 600; }
+  .combo-exercise-item .video-link { margin-top: 0; flex-shrink: 0; }
+  .exercise-plain-sub { display: block; }
+
+  /* Explicaciones y tips: separados visualmente debajo de los ejercicios */
+  .explain-box { display: block; margin-top: 12px; padding: 12px 14px; background: rgba(255,214,0,0.04); border: 1px solid rgba(255,214,0,0.15); border-left: 3px solid var(--gold); border-radius: var(--radius-sm); font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
+  .explain-box b { color: var(--text-primary); font-weight: 600; }
+  .explain-box + .explain-box { margin-top: 8px; }
 
   /* Contenedores semánticos resaltados dentro de sub */
-  .sub-section { display: block; margin-top: 6px; padding-left: 4px; }
   .sub-block-title { font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; color: var(--violet-light); background: rgba(124,77,255,0.1); padding: 1px 7px; border-radius: 4px; display: inline-block; margin-right: 6px; }
   .sub-title-tag { font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; margin-right: 4px; }
   .sub-title-tag.coaching { color: var(--gold); }
@@ -899,12 +913,81 @@ function renderGrid(data) {
     grid.appendChild(card);
   });
 }
+function renderExerciseSub(subHtml) {
+  if (!subHtml) return '';
+  const container = document.createElement('div');
+  container.innerHTML = subHtml;
+
+  // Separar: explicaciones/tips (sub-section) por un lado, líneas de ejercicio por otro
+  const explanationParts = [];
+  const lineGroups = [];
+  let currentLine = [];
+
+  Array.from(container.childNodes).forEach(node => {
+    if (node.nodeType === 1 && node.tagName === 'BR') {
+      if (currentLine.length) { lineGroups.push(currentLine); currentLine = []; }
+    } else if (node.nodeType === 1 && node.classList && node.classList.contains('sub-section')) {
+      explanationParts.push(node.innerHTML);
+    } else {
+      currentLine.push(node);
+    }
+  });
+  if (currentLine.length) lineGroups.push(currentLine);
+
+  const hasTags = lineGroups.some(line => line.some(n => n.nodeType === 1 && n.classList && n.classList.contains('sub-block-title')));
+
+  let out = '';
+
+  if (hasTags && lineGroups.length) {
+    out += '<div class="combo-exercise-list">';
+    lineGroups.forEach(lineNodes => {
+      const wrap = document.createElement('div');
+      lineNodes.forEach(n => wrap.appendChild(n.cloneNode(true)));
+
+      let tag = '';
+      const tagEl = wrap.querySelector('.sub-block-title');
+      if (tagEl) { tag = tagEl.textContent; tagEl.remove(); }
+
+      let linkHtml = '';
+      const linkEl = wrap.querySelector('.video-link');
+      if (linkEl) { linkHtml = linkEl.outerHTML; linkEl.remove(); }
+
+      let text = wrap.innerHTML.replace(/^\s+/, '').trim();
+      let name = text, reps = '';
+      const eqIdx = text.indexOf(' = ');
+      if (eqIdx > -1) {
+        name = text.slice(0, eqIdx).trim();
+        reps = text.slice(eqIdx + 3).trim().replace(/\.\s*$/, '');
+      }
+
+      out += `<div class="combo-exercise-item">` +
+        (tag ? `<span class="combo-tag">${tag}</span>` : '') +
+        `<div class="combo-exercise-info"><span class="combo-exercise-name">${name}</span>` +
+        (reps ? `<span class="combo-exercise-reps">${reps}</span>` : '') +
+        `</div>${linkHtml}</div>`;
+    });
+    out += '</div>';
+  } else if (lineGroups.length) {
+    const wrap = document.createElement('div');
+    lineGroups.forEach((lineNodes, i) => {
+      lineNodes.forEach(n => wrap.appendChild(n.cloneNode(true)));
+      if (i < lineGroups.length - 1) wrap.appendChild(document.createElement('br'));
+    });
+    out += `<div class="exercise-plain-sub">${wrap.innerHTML}</div>`;
+  }
+
+  if (explanationParts.length) {
+    explanationParts.forEach(p => { out += `<div class="explain-box">${p}</div>`; });
+  }
+
+  return out;
+}
 function getExerciseRow(ex, idx) {
   return `
     <div class="exercise-row">
       <div class="exercise-num">${idx + 1}</div>
       <div class="exercise-title-container">
-        <div class="exercise-name">${ex.name}<sub>${ex.sub}</sub></div>
+        <div class="exercise-name">${ex.name}<div class="exercise-explain-wrap">${renderExerciseSub(ex.sub)}</div></div>
       </div>
       <div class="exercise-detail"><b>${ex.reps}</b>${ex.detail ? ex.detail : ''}</div>
     </div>
